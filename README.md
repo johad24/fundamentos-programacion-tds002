@@ -7,14 +7,14 @@
 | 01 | Hola Mundo |✔|
 | 02 | Variables y operadores |✔|
 | 03 | Programas secuenciales |✔|
-| 04 | Cálculos y formato | pendiente |
-| 05 | Repaso · Primer parcial | pendiente |
-| 06 | Decisiones | pendiente |
-| 07 | Ciclos | pendiente |
-| 08 | Métodos | pendiente |
-| 09 | Modularidad | pendiente |
-| 10 | Repaso · Segundo parcial | pendiente |
-| 11 | Arreglos | pendiente |
-| 12 | Listas | pendiente |
-| 13 | Ejercicios integradores | pendiente |
-| 14 | Proyecto final | pendiente |
+| 04 | Cálculos y formato |✔|
+| 05 | Repaso · Primer parcial ||
+| 06 | Decisiones ||
+| 07 | Ciclos ||
+| 08 | Métodos ||
+| 09 | Modularidad ||
+| 10 | Repaso · Segundo parcial ||
+| 11 | Arreglos ||
+| 12 | Listas ||
+| 13 | Ejercicios integradores ||
+| 14 | Proyecto final ||
