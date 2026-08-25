@@ -4,9 +4,9 @@
 
 | # | Tema | Estado |
 |----|------|--------|
-| 01 | Hola Mundo | ✔ |
+| 01 | Hola Mundo |✔|
 | 02 | Variables y operadores |✔|
-| 03 | Programas secuenciales | pendiente |
+| 03 | Programas secuenciales |✔|
 | 04 | Cálculos y formato | pendiente |
 | 05 | Repaso · Primer parcial | pendiente |
 | 06 | Decisiones | pendiente |
