@@ -8,7 +8,7 @@
 | 02 | Variables y operadores |✔|
 | 03 | Programas secuenciales |✔|
 | 04 | Cálculos y formato |✔|
-| 05 | Repaso · Primer parcial ||
+| 05 | Repaso · Primer parcial |✔|
 | 06 | Decisiones ||
 | 07 | Ciclos ||
 | 08 | Métodos ||
