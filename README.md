@@ -10,7 +10,7 @@
 | 04 | Cálculos y formato |✔|
 | 05 | Repaso · Primer parcial |✔|
 | 06 | Decisiones |✔|
-| 07 | Ciclos ||
+| 07 | Ciclos |✔|
 | 08 | Métodos ||
 | 09 | Modularidad ||
 | 10 | Repaso · Segundo parcial ||
