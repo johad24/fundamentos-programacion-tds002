@@ -30,6 +30,9 @@ do
             BuscarLibro(titulos, autores, disponibles, prestadoA);
             break;
         case "6":
+            EliminarLibro(titulos, autores, disponibles, prestadoA);
+            break;
+        case "7":
             Console.WriteLine("\nGracias por usar el sistema.");
             break;
         default:
@@ -37,7 +40,7 @@ do
             break;
     }
 
-} while (opcion != "6");
+} while (opcion != "7");
 
 static void MostrarMenu()
 {
@@ -46,7 +49,8 @@ static void MostrarMenu()
     Console.WriteLine("3. Prestar libro");
     Console.WriteLine("4. Devolver libro");
     Console.WriteLine("5. Buscar libro");
-    Console.WriteLine("6. Salir");
+    Console.WriteLine("6. Eliminar libro");
+    Console.WriteLine("7. Salir");
     Console.Write("Elige una opción: ");
 }
 
@@ -235,6 +239,61 @@ static void BuscarLibro(List<string> titulos, List<string> autores, List<bool> d
     if (!encontrado)
     {
         Console.WriteLine("\nNo se encontró ningún libro con ese título.");
+    }
+
+    Volver();
+}
+
+static void EliminarLibro(List<string> titulos, List<string> autores, List<bool> disponibles, List<string> prestadoA)
+{
+    Console.Clear();
+    Console.WriteLine("--- Eliminar libro ---");
+
+    if (titulos.Count == 0)
+    {
+        Console.WriteLine("\nNo hay libros registrados.");
+        Volver();
+        return;
+    }
+
+    Console.WriteLine();
+    for (int i = 0; i < titulos.Count; i++)
+    {
+        Console.WriteLine($"{i + 1}. {titulos[i]} - {autores[i]}");
+    }
+
+    Console.Write("\nNúmero del libro a eliminar: ");
+    int numero;
+    bool esValido = int.TryParse(Console.ReadLine(), out numero);
+    int indice = numero - 1;
+
+    if (!esValido || indice < 0 || indice >= titulos.Count)
+    {
+        Console.WriteLine("Número inválido.");
+    }
+    else if (!disponibles[indice])
+    {
+        Console.WriteLine($"'{titulos[indice]}' está prestado a {prestadoA[indice]}.");
+        Console.Write("Razón para dar de baja al libro: ");
+        string razon = Console.ReadLine();
+
+        string tituloEliminado = titulos[indice];
+        titulos.RemoveAt(indice);
+        autores.RemoveAt(indice);
+        disponibles.RemoveAt(indice);
+        prestadoA.RemoveAt(indice);
+
+        Console.WriteLine($"\n'{tituloEliminado}' dado de baja. Razón: {razon}");
+    }
+    else
+    {
+        string tituloEliminado = titulos[indice];
+        titulos.RemoveAt(indice);
+        autores.RemoveAt(indice);
+        disponibles.RemoveAt(indice);
+        prestadoA.RemoveAt(indice);
+
+        Console.WriteLine($"\n'{tituloEliminado}' eliminado del catálogo.");
     }
 
     Volver();
