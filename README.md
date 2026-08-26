@@ -17,4 +17,4 @@
 | 11 | Arreglos |✔|
 | 12 | Listas |✔|
 | 13 | Ejercicios integradores |✔|
-| 14 | Proyecto final ||
+| 14 | Proyecto final |✔|
