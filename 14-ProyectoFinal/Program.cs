@@ -23,6 +23,9 @@ do
         case "3":
             PrestarLibro(titulos, disponibles, prestadoA);
             break;
+        case "4":
+            DevolverLibro(titulos, disponibles, prestadoA);
+            break;
         case "6":
             Console.WriteLine("\nGracias por usar el sistema.");
             break;
@@ -38,7 +41,7 @@ static void MostrarMenu()
     Console.WriteLine("\n1. Agregar libro");
     Console.WriteLine("2. Listar libros");
     Console.WriteLine("3. Prestar libro");
-    Console.WriteLine("4. Devolver libro (próximamente)");
+    Console.WriteLine("4. Devolver libro");
     Console.WriteLine("5. Buscar libro (próximamente)");
     Console.WriteLine("6. Salir");
     Console.Write("Elige una opción: ");
@@ -121,10 +124,11 @@ static void PrestarLibro(List<string> titulos, List<bool> disponibles, List<stri
     }
 
     Console.Write("\nNúmero del libro a prestar: ");
-    int numero = int.Parse(Console.ReadLine());
+    int numero;
+    bool esValido = int.TryParse(Console.ReadLine(), out numero);
     int indice = numero - 1;
 
-    if (indice < 0 || indice >= titulos.Count)
+    if (!esValido || indice < 0 || indice >= titulos.Count)
     {
         Console.WriteLine("Número inválido.");
     }
@@ -141,6 +145,59 @@ static void PrestarLibro(List<string> titulos, List<bool> disponibles, List<stri
         prestadoA[indice] = nombre;
 
         Console.WriteLine($"\n'{titulos[indice]}' prestado a {nombre}.");
+    }
+
+    Volver();
+}
+
+static void DevolverLibro(List<string> titulos, List<bool> disponibles, List<string> prestadoA)
+{
+    Console.Clear();
+    Console.WriteLine("--- Devolver libro ---");
+
+    if (titulos.Count == 0)
+    {
+        Console.WriteLine("\nNo hay libros registrados.");
+        Volver();
+        return;
+    }
+
+    Console.WriteLine();
+    bool hayPrestados = false;
+    for (int i = 0; i < titulos.Count; i++)
+    {
+        if (!disponibles[i])
+        {
+            Console.WriteLine($"{i + 1}. {titulos[i]} - Prestado a {prestadoA[i]}");
+            hayPrestados = true;
+        }
+    }
+
+    if (!hayPrestados)
+    {
+        Console.WriteLine("No hay libros prestados actualmente.");
+        Volver();
+        return;
+    }
+
+    Console.Write("\nNúmero del libro a devolver: ");
+    int numero;
+    bool esValido = int.TryParse(Console.ReadLine(), out numero);
+    int indice = numero - 1;
+
+    if (!esValido || indice < 0 || indice >= titulos.Count)
+    {
+        Console.WriteLine("Número inválido.");
+    }
+    else if (disponibles[indice])
+    {
+        Console.WriteLine("Ese libro no estaba prestado.");
+    }
+    else
+    {
+        Console.WriteLine($"\n'{titulos[indice]}' devuelto por {prestadoA[indice]}.");
+        disponibles[indice] = true;
+        prestadoA[indice] = "";
     }
 
     Volver();
