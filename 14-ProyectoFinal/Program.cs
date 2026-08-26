@@ -26,6 +26,9 @@ do
         case "4":
             DevolverLibro(titulos, disponibles, prestadoA);
             break;
+        case "5":
+            BuscarLibro(titulos, autores, disponibles, prestadoA);
+            break;
         case "6":
             Console.WriteLine("\nGracias por usar el sistema.");
             break;
@@ -42,7 +45,7 @@ static void MostrarMenu()
     Console.WriteLine("2. Listar libros");
     Console.WriteLine("3. Prestar libro");
     Console.WriteLine("4. Devolver libro");
-    Console.WriteLine("5. Buscar libro (próximamente)");
+    Console.WriteLine("5. Buscar libro");
     Console.WriteLine("6. Salir");
     Console.Write("Elige una opción: ");
 }
@@ -198,6 +201,40 @@ static void DevolverLibro(List<string> titulos, List<bool> disponibles, List<str
         Console.WriteLine($"\n'{titulos[indice]}' devuelto por {prestadoA[indice]}.");
         disponibles[indice] = true;
         prestadoA[indice] = "";
+    }
+
+    Volver();
+}
+
+static void BuscarLibro(List<string> titulos, List<string> autores, List<bool> disponibles, List<string> prestadoA)
+{
+    Console.Clear();
+    Console.WriteLine("--- Buscar libro ---");
+
+    if (titulos.Count == 0)
+    {
+        Console.WriteLine("\nNo hay libros registrados.");
+        Volver();
+        return;
+    }
+
+    Console.Write("\nTítulo a buscar: ");
+    string buscado = Console.ReadLine();
+
+    bool encontrado = false;
+    for (int i = 0; i < titulos.Count; i++)
+    {
+        if (titulos[i].ToLower().Contains(buscado.ToLower()))
+        {
+            string estado = disponibles[i] ? "Disponible" : $"Prestado a {prestadoA[i]}";
+            Console.WriteLine($"\n{titulos[i]} - {autores[i]} - {estado}");
+            encontrado = true;
+        }
+    }
+
+    if (!encontrado)
+    {
+        Console.WriteLine("\nNo se encontró ningún libro con ese título.");
     }
 
     Volver();
