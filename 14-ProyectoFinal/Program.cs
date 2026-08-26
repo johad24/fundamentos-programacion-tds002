@@ -1,5 +1,4 @@
-﻿
-List<string> titulos = new List<string>();
+﻿List<string> titulos = new List<string>();
 List<string> autores = new List<string>();
 List<bool> disponibles = new List<bool>();
 List<string> prestadoA = new List<string>();
@@ -21,6 +20,9 @@ do
         case "2":
             ListarLibros(titulos, autores, disponibles, prestadoA);
             break;
+        case "3":
+            PrestarLibro(titulos, disponibles, prestadoA);
+            break;
         case "6":
             Console.WriteLine("\nGracias por usar el sistema.");
             break;
@@ -35,7 +37,7 @@ static void MostrarMenu()
 {
     Console.WriteLine("\n1. Agregar libro");
     Console.WriteLine("2. Listar libros");
-    Console.WriteLine("3. Prestar libro (próximamente)");
+    Console.WriteLine("3. Prestar libro");
     Console.WriteLine("4. Devolver libro (próximamente)");
     Console.WriteLine("5. Buscar libro (próximamente)");
     Console.WriteLine("6. Salir");
@@ -92,6 +94,53 @@ static void ListarLibros(List<string> titulos, List<string> autores, List<bool> 
             string estado = disponibles[i] ? "Disponible" : $"Prestado a {prestadoA[i]}";
             Console.WriteLine($"{i + 1}. {titulos[i]} - {autores[i]} - {estado}");
         }
+    }
+
+    Volver();
+}
+
+static void PrestarLibro(List<string> titulos, List<bool> disponibles, List<string> prestadoA)
+{
+    Console.Clear();
+    Console.WriteLine("--- Prestar libro ---");
+
+    if (titulos.Count == 0)
+    {
+        Console.WriteLine("\nNo hay libros registrados.");
+        Volver();
+        return;
+    }
+
+    Console.WriteLine();
+    for (int i = 0; i < titulos.Count; i++)
+    {
+        if (disponibles[i])
+        {
+            Console.WriteLine($"{i + 1}. {titulos[i]}");
+        }
+    }
+
+    Console.Write("\nNúmero del libro a prestar: ");
+    int numero = int.Parse(Console.ReadLine());
+    int indice = numero - 1;
+
+    if (indice < 0 || indice >= titulos.Count)
+    {
+        Console.WriteLine("Número inválido.");
+    }
+    else if (!disponibles[indice])
+    {
+        Console.WriteLine("Ese libro ya está prestado.");
+    }
+    else
+    {
+        Console.Write("Nombre de la persona: ");
+        string nombre = Console.ReadLine();
+
+        disponibles[indice] = false;
+        prestadoA[indice] = nombre;
+
+        Console.WriteLine($"\n'{titulos[indice]}' prestado a {nombre}.");
     }
 
     Volver();
