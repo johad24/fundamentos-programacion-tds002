@@ -1,6 +1,6 @@
 # Fundamentos de Programación · TDS-002
 
-**Nombre:** Raul Feliz · **Matrícula:** 20260966 · **Sección:** [tu sección]
+**Nombre:** Raul Feliz · **Matrícula:** 20260966 · **Sección:** C-2 
 
 | # | Tema | Estado |
 |----|------|--------|
