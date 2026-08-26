@@ -12,8 +12,8 @@
 | 06 | Decisiones |✔|
 | 07 | Ciclos |✔|
 | 08 | Métodos |✔|
-| 09 | Modularidad ||
-| 10 | Repaso · Segundo parcial ||
+| 09 | Modularidad |✔|
+| 10 | Repaso · Segundo parcial |✔|
 | 11 | Arreglos ||
 | 12 | Listas ||
 | 13 | Ejercicios integradores ||
